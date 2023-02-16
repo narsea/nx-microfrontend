@@ -7,3 +7,4 @@ export const appRoutes: Route[] = [
       import('./remote-entry/entry.module').then((m) => m.RemoteEntryModule),
   },
 ];
+

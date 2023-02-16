@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ProductList } from './products';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 // import { Observable } from 'rxjs';
 
 @Injectable({
@@ -14,9 +15,13 @@ export class ProductsService {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   private productlist = 'https://fakestoreapi.com/products'
   constructor(private http: HttpClient) { }
+  
 
   getProductList(): Observable<ProductList[]> {
-    return this.http.get<ProductList[]>(this.productlist);
+    return this.http.get<ProductList[]>(this.productlist)
+    .pipe(map((res:any)=>{
+      return res;
+    }));
   }
 
   // getProductList(){

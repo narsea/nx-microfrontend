@@ -13,6 +13,11 @@ export const appRoutes: Route[] = [
   },
   {
     path: '',
+    redirectTo: 'product',
+    pathMatch: 'full',
+  },
+  {
+    path: '',
     component: NxWelcomeComponent,
   },
 ];

@@ -1,110 +1,60 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<ng-container *ngIf="products.length !==0">
   <div class="container">
-    <a class="navbar-brand" href="#">SHOPIFY</a>
-    <div class="d-flex">
-      <form class="d-flex" role="search">
-        <input
-          class="form-control me-2 text"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-        />
-      </form>
-      <a class="cart" href="cart.html"> Cart </a>
-    </div>
-  </div>
-</nav>
-<div class="cart-section">
-  <div class="table-heading">
-    <h2 class="cart-product">Product</h2>
-    <h2 class="cart-price">Price</h2>
-    <h2 class="cart-quantity">Quantity</h2>
-    <h2 class="cart-total">Total</h2>
-  </div>
-  <div class="table-content">
-    <div class="cart-product">
-      <div class="cart-image-box">
-        <div class="cart-images" id="image-10"></div>
+      <div class="card-table">
+          <div class="cart-product">
+              <table class="table table-responsive">
+                  <thead>
+                      <tr>
+                          <th>Sr.No</th>
+                          <th>Product Name</th>
+                          <th>Product Image</th>
+                          <th>Description</th>
+                          <th>Price</th>
+                          <th>Quantity</th>
+                          <th>Total</th>
+                          <th>Action</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let item of products; let i = index">
+                          <td>{{i+1}}</td>
+                          <td>{{item.title}}</td>
+                          <td><img style="width: 120px;" src="{{item.image}}" alt=""></td>
+                          <td style="width: 25%;">{{item.description}}</td>
+                          <th style="width: 12%;">{{item.price}}</th>
+                          <td style="width: 12%;">{{item.quantity}}</td>
+                          <td style="width: 12%;">{{item.total}}</td>
+                          <td>
+                              <button (click)="removeItem(item)" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td colspan="4"></td>
+                          <td><button (click)="emptycart()" class="btn btn-danger">Empty Cart</button></td>
+                          <!-- <td><button routerLink="product" class="btn btn-primary">Shop More</button></td> -->
+                          <td><button class="btn btn-success">Checkout</button></td>
+                          <td><strong>Grand Total : ${{grandTotal}}</strong></td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
       </div>
-      <h2 class="cart-item">Lemon</h2>
-      <p class="cart-description">A bag of lemons</p>
-    </div>
-    <div class="cart-price"><h3 class="price">$4.99</h3></div>
-    <div class="cart-quantity">
-      <input
-        type="text"
-        name="cart-1-quantity"
-        id="cart-1-quantity"
-        value="1"
-      />
-    </div>
-    <div class="cart-total">
-      <h3 class="price">$4.99</h3>
-      <button type="button" class="remove" name="remove-1" id="remove-1">
-        x
-      </button>
-    </div>
   </div>
-  <div class="table-content">
-    <div class="cart-product">
-      <div class="cart-image-box">
-        <div class="cart-images" id="image-7"></div>
+</ng-container>
+
+
+<ng-container *ngIf="products.length ===0">
+  <div class="container">
+      <div class="card">
+          <h5 class="card-title">My Cart</h5>
       </div>
-      <h2 class="cart-item">Banana</h2>
-      <p class="cart-description">A bag of bananas</p>
-    </div>
-    <div class="cart-price"><h3 class="price">$4.99</h3></div>
-    <div class="cart-quantity">
-      <input
-        type="text"
-        name="cart-1-quantity"
-        id="cart-1-quantity"
-        value="1"
-      />
-    </div>
-    <div class="cart-total">
-      <h3 class="price">$4.99</h3>
-      <button type="button" class="remove" name="remove-2" id="remove-2">
-        x
-      </button>
-    </div>
-  </div>
-  <div class="table-content">
-    <div class="cart-product">
-      <div class="cart-image-box">
-        <div class="cart-images" id="image-3"></div>
+      <div class="center">
+          <img src="https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90" alt="">
+          <h4>Your cart is empty!</h4>
+          <h6>Add item to it now</h6>
+          <!-- <button routerLink="product" class="btn btn-primary">Shop Now</button> -->
       </div>
-      <h2 class="cart-item">Passionfruit</h2>
-      <p class="cart-description">A bag of passionfruit</p>
-    </div>
-    <div class="cart-price"><h3 class="price">$4.99</h3></div>
-    <div class="cart-quantity">
-      <input
-        type="text"
-        name="cart-1-quantity"
-        id="cart-1-quantity"
-        value="1"
-      />
-    </div>
-    <div class="cart-total">
-      <h3 class="price">$4.99</h3>
-      <button type="button" class="remove" name="remove-3" id="remove-3">
-        x
-      </button>
-    </div>
   </div>
-  <div class="coupon">
-    <input type="text" name="coupon" id="coupon" placeholder="COUPON CODE" />
-    <button type="button" name="coupon" id="coupon">Submit</button>
-  </div>
-  <div class="checkout">
-    <button type="button" name="update" id="update">Update</button>
-    <button type="button" name="checkout" id="checkout">Checkout</button>
-    <div class="final-cart-total"><h3 class="price">$14.97</h3></div>
-  </div>
-  <div class="keep-shopping">
-    <button type="button" name="keep-shopping" id="keep-shopping">
-      Keep Shopping
-    </button>
-  </div>
-</div>
+</ng-container>
+
+<router-outlet></router-outlet>
