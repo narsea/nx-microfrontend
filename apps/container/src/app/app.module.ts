@@ -5,12 +5,12 @@ import { AppComponent } from './app.component';
 import { NxWelcomeComponent } from './nx-welcome.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './app.routes';
-import { ProductsService } from '@nx-workspace/shared/data-access-user';
+import { FilterPipe, ProductsService } from '@nx-workspace/shared/data-access-user';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, NxWelcomeComponent],
+  declarations: [AppComponent, NxWelcomeComponent,FilterPipe],
   imports: [
     FormsModule,
     HttpClientModule,
